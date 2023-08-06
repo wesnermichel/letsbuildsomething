@@ -1,5 +1,6 @@
 import React from "react";
-import Index from "./Index"; // Make sure the import path is correct
+import "./App.css";
+import Index from "./Index.jsx";
 
 function App() {
   return (

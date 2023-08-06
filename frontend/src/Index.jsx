@@ -1,45 +1,38 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
 
 function Index() {
-  const [inputType, setInputType] = useState('domain');
-  const [inputValue, setInputValue] = useState('');
-  const [email, setEmail] = useState('');
+  const [inputType, setInputType] = useState("domain");
+  const [inputValue, setInputValue] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-  
-    try {
-      const response = await axios.post('/api/form', {
-        email,
-        inputType,
-        inputValue,
-      });
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
   const handleInputTypeChange = (e) => {
     setInputType(e.target.value);
-    setInputValue('');
+    setInputValue("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      // TODO: Send the form data to the server and handle the response
-      // You can use axios or fetch here to make the API request
-      // Example using axios:
-      // const response = await axios.post('/api/form', { email, inputType, inputValue });
+      // Send the form data to the server and handle the response
+      const response = await axios.post("/api/form", {
+        email,
+        inputType,
+        inputValue,
+      });
 
       // TODO: Handle the response from the server
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
     }
   };
 
@@ -62,7 +55,7 @@ function Index() {
             <input
               type="radio"
               value="domain"
-              checked={inputType === 'domain'}
+              checked={inputType === "domain"}
               onChange={handleInputTypeChange}
             />
             Check Domain Availability
@@ -71,7 +64,7 @@ function Index() {
             <input
               type="radio"
               value="keywords"
-              checked={inputType === 'keywords'}
+              checked={inputType === "keywords"}
               onChange={handleInputTypeChange}
             />
             Generate Domain Suggestions
@@ -83,9 +76,9 @@ function Index() {
             value={inputValue}
             onChange={handleInputChange}
             placeholder={
-              inputType === 'domain'
-                ? 'Enter domain (e.g., example.com)'
-                : 'Enter keywords (comma-separated)'
+              inputType === "domain"
+                ? "Enter domain (e.g., example.com)"
+                : "Enter keywords (comma-separated)"
             }
             required
           />
