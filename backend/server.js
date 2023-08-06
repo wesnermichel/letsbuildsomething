@@ -5,11 +5,11 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const userController = require("./controllers/userController");
 
-const app = express();
-
 // Middleware
+const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+app.use("/api/users", userController);
 
 // Connect to MongoDB (replace 'your-database-name' with your actual DB name)
 mongoose
@@ -23,9 +23,6 @@ mongoose
   .catch((error) => {
     console.error("Error connecting to MongoDB:", error);
   });
-
-// Use the userController routes
-app.use("/api/users", userController);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {

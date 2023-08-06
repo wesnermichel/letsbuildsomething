@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User"); // Make sure to update the path
+const User = require("../models/Users"); // Change this line
 const dbConnection = require("./dbconnection");
 
 // Route to handle user submissions
